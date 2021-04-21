@@ -1,0 +1,16 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+div{
+    background-color: darkcyan;
+    padding: 20pt;
+    margin-top: 4px;
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: cornsilk;
+}
+
+img{
+    margin: 10px;
+}

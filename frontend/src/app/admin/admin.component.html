@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<div class="main">
+ <div class="container">
+ <form #adminlogin="ngForm" (ngSubmit)="adminVerify()">
+    <fieldset>
+      <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" id="adminemail" class="form-control" placeholder="Enter your Email" required pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}" name="adminemail" [(ngModel)]="admin.adminemail"> 
+        
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="adminpass" class="form-control" placeholder="Enter your password" required minlength="6" name="adminpass" [(ngModel)]="admin.adminpass" >
+      </div>
+      
+      <button type="submit" class="btn btn-primary" style="background-color: antiquewhite; color: darkcyan;" [disabled]=adminlogin.form.invalid>Submit</button>
+    </fieldset>
+  </form>
+
+</div>
+</div>

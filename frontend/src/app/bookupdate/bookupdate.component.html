@@ -1,0 +1,32 @@
+<form id="updateForm" (submit)="updateBook(book)">
+    <table>
+        <tr>
+            <td rowspan="6"><img src="{{book.image}}" height="165px" width="124px"></td>
+            <td>ISBN</td>
+            <td><input type="number" value="{{book._id}}" name="_id" [(ngModel)]="book._id" disabled></td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td><input type="text" value="{{book.title}}" name="title" [(ngModel)]="book.title"></td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td><input type="text" value="{{book.author}}" name="author" [(ngModel)]="book.author"></td>
+        </tr>
+        <tr>
+            <td>Genre</td>
+            <td><input type="text" value="{{book.genre}}" name="genre" [(ngModel)]="book.genre"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input type="text" value="{{book.description}}" name="description" [(ngModel)]="book.description"></td>
+        </tr>
+        <tr>
+            <td>Cover</td>
+            <td colspan="2"><input type="text" value="{{book.image}}" style="width: max-content;" name="image" [(ngModel)]="book.image"></td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-danger" style="cursor:pointer; width: 100px; margin: 10px">Update</button>
+    <a routerLink="/admindash/books" class="btn btn-warning" style="cursor:pointer" style="width: 100px;"> Cancel</a>
+</form>
+<hr>

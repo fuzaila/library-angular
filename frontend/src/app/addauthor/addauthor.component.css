@@ -1,0 +1,16 @@
+body{
+    overflow: hidden;
+}
+
+.container{
+                margin: 4px, 4px;
+                padding: 4px;
+                height: 390px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                text-align: justify;
+}
+    
+h1, h2, h3, h4, h5, h6{
+    font-family: Verdana, Tahoma, sans-serif;
+}

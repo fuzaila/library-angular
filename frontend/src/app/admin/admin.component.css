@@ -1,0 +1,24 @@
+.main{
+    background-color: rgb(24, 24, 24);
+    padding: 10px;
+    height: 605px;
+    margin-top: 4px;
+    align-content: center;
+    display: flex;
+    /* flex-direction: row; */
+}
+
+.container{
+    align-items: center;
+    width: 33%;
+    padding: 5%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 5%;
+    border-radius: 10px;
+    box-shadow: rgb(29, 93, 94) 5px 5px 15px;
+    color: rgb(29, 93, 94);
+    height: fit-content;
+    /* font-weight: 500; */
+}
+
+

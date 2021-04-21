@@ -1,0 +1,11 @@
+<div class="main">
+    <div class="left">
+        <div class="menu"><a [routerLink]="['books']" [queryParams]="{ _id: userid.id}">Books</a></div>
+        <div class="menu"><a [routerLink]="['authors']" [queryParams]="{ _id: userid.id}">Authors</a></div>
+    </div>
+    <div class="right">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+

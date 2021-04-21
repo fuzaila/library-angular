@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorModel } from './author.model';
-import { AuthorsService } from '../authors.service';
+import { AuthService } from '../auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BooksService } from '../books.service';
 
 @Component({
   selector: 'app-authors',
@@ -8,14 +9,35 @@ import { AuthorsService } from '../authors.service';
   styleUrls: ['./authors.component.css']
 })
 export class AuthorsComponent implements OnInit {
-  authors: AuthorModel[];
 
-  constructor(private authorService: AuthorsService) { }
+  constructor( private BooksService: BooksService, public _auth: AuthService, private _router: Router, private ActivatedRoute: ActivatedRoute ) { }
+
+  title:String = "Authors list";
+
+  authors = [{
+    _id : '',
+    name : '',
+    country : '',
+    genre : '',
+    img : ''
+  }]
+
+  user = { userid : '' }
+
 
   ngOnInit(): void {
-    this.authorService.getAuthors().subscribe((data)=>{
+
+    this.ActivatedRoute.queryParams
+        .subscribe(params => {
+              this.user.userid = params['_id'];
+              console.log(this.user.userid)
+        })
+
+    this.BooksService.getAuthors().subscribe((data)=>{
       this.authors = JSON.parse(JSON.stringify(data));
+      console.log(this.authors);
     })
+
   }
 
 }

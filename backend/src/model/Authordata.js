@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/library');
+mongoose.connect('mongodb://localhost:27017/libraryapp', { useNewUrlParser: true, useUnifiedTopology: true });
 const Schema = mongoose.Schema;
 
-const AuthorSchema = new Schema({
-    name: String,
-    books: String,
-    country: String,
-    img: String
+var NewAuthorSchema = new Schema({
+    name : String,
+    genre : String,
+    country : String,
+    image : String
 });
 
-const Authordata = mongoose.model('authordata', AuthorSchema);
+var authorData = mongoose.model('author', NewAuthorSchema);           //UserData is the model and NewBookData is the schema
 
-module.exports = Authordata;
+module.exports = authorData;

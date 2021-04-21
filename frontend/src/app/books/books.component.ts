@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BookModel } from './book.model';
+import { AuthService } from '../auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BooksService } from '../books.service';
 
 @Component({
@@ -8,14 +9,51 @@ import { BooksService } from '../books.service';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-  books: BookModel[];
+
+  constructor( private BooksService: BooksService, public _auth: AuthService, private _router: Router, private ActivatedRoute: ActivatedRoute ) { }
   
-  constructor(private bookService: BooksService) { }
+  title:String = "Books list";
+
+  books = [{
+    _id : '',
+    title : '',
+    author : '',
+    genre : '',
+    description : ''
+  }]
+
+  user = { userid : '' }
+
+
+  showShortDesciption = true
+
+ alterDescriptionText(book) {
+    this.showShortDesciption = !this.showShortDesciption
+ }
 
   ngOnInit(): void {
-    this.bookService.getBooks().subscribe((data)=>{
+
+    this.ActivatedRoute.queryParams
+        .subscribe(params => {
+              this.user.userid = params['_id'];
+              console.log(this.user.userid)
+        })
+
+    this.BooksService.getBooks().subscribe((data)=>{
       this.books = JSON.parse(JSON.stringify(data));
-    })
+      console.log(this.books);
+  })
+  }
+
+  deleteBook(book)
+  {
+    if(confirm("Are you sure to delete?"))
+    {
+      this.BooksService.deleteBook(book);
+      console.log("Delete called");
+      alert("Deleted book");
+      location.reload();
+    }
   }
 
 }

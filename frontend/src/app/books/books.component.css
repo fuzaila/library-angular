@@ -1,0 +1,35 @@
+body{
+    overflow: hidden;
+}
+
+.container{
+                margin: 4px, 4px;
+                padding: 4px;
+                height: 444px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                text-align: justify;
+}
+  
+h1, h2, h3, h4, h5, h6{
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+.show-less {
+    height: 4rem;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.show-button{
+    background: none!important;
+    border: none;
+    font-size: smaller;
+    padding: 0!important;
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+}
+/* table{
+    border: 2px solid black;
+} */

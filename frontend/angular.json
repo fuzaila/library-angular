@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fe": {
+    "library": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fe",
+            "outputPath": "dist/library",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [ ]
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -61,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "fe:build"
+            "browserTarget": "library:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "fe:build:production"
+              "browserTarget": "library:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fe:build"
+            "browserTarget": "library:build"
           }
         },
         "test": {
@@ -89,7 +93,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [ ]
+            "scripts": []
           }
         },
         "lint": {
@@ -109,19 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "fe:serve"
+            "devServerTarget": "library:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "fe:serve:production"
+              "devServerTarget": "library:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "fe",
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "library"
 }

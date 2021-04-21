@@ -1,0 +1,47 @@
+.main{
+    background-color: rgb(24, 24, 24);
+    padding: 10px;
+    height: 600px;
+    margin-top: 4px;
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.left{
+    width: 15%;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+    height: 85%;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.right{
+    float: right;
+    background-color: rgb(255, 255, 255);
+    padding: 25px;
+    width: 80%;
+    height: 85%;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.menu{
+    padding: 9px 5px 9px 5px;
+    text-align: left;
+    text-decoration: none;
+    overflow-wrap: break-word;
+}
+
+.menu:hover{
+    background-color: rgb(145, 255, 255);
+    color: cornsilk;
+    border-radius: 5px;
+    padding: 9px 10px 9px 10px;
+}
+
+.menu a{
+    color: darkcyan;
+    font-weight: 500;
+}

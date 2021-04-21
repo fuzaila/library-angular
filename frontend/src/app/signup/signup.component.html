@@ -1,133 +1,40 @@
-<header class="navbar navbar-bright navbar-fixed-top" id="bar" role="banner">
-  <div class="card-header">
-    <a routerLink=''> Home </a>
-  </div>
-</header>
 
-<div id="masthead">  
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7">
-          <h1>Sign UP
-            <p class="lead"></p>
-          </h1>
-        </div>
-        <div class="col-md-5">
-          <div class="well well-lg"> 
-            <div class="row">
-              <div class="col-sm-12">
-                
-              
-              </div>
-            </div>
+ <div class="container">
+    <form (ngSubmit)="addUser()" #signupForm="ngForm">
+       <fieldset>
+         <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Enter your name" [(ngModel)]=userItem.name>
           </div>
-        </div>
-      </div> 
-    </div><!-- /cont -->
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="top-spacer"> </div>
-        </div>
-      </div> 
-    </div><!-- /cont -->
-    
-  </div>
-  
-  
-  <div class="container">
-    <div class="row">
-      
-      <div class="col-md-12"> 
-        
-        <div class="panel">
-          <div class="panel-body">
-            
-            
-              <!-- form -->
-              <div class="main-w3layouts wrapper">
-              <h1>Become our Member !!</h1>
-              <div class="main-agileinfo">
-                <div class="agileits-top">
-                  <form action="/login" onsubmit="return (valid13() && valid12() && valid11() )">
-                    <input class="text" type="text" name="Username" placeholder="Username" required="">
-                    <input class="text email" id="mail" type="text" name="email" placeholder="Email" required="">
-                    <input class="text" id="pswd" onkeyup="trigger()" type="password" name="password" placeholder="Password" required="">
-                    
-                    <div class="indicator">
-                      <span class="weak"></span>
-                      <span class="medium"></span>
-                      <span class="strong"></span>
-                    </div>
-                    <div class="msg">
-                  </div>
-          
-                    <input class="text w3lpass" id="pnum" type="text" name="phone" placeholder="Phone" required="">
-                    <div class="wthree-text">
-                      <label class="anim">
-                        <input type="checkbox" class="checkbox">
-                        <span>I Agree To The Terms & Conditions</span>
-                      </label>
-                      <div class="clear"> </div>
-                    </div>
-                    <input type="submit" value="SIGNUP">
-                  </form>
-                  <p>Already have an Account? <a href="/login"> Login Now!</a></p>
-                </div>
-              </div>
-              <!-- form ends -->
-              
-            
-            <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
-          
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" class="form-control" placeholder="Enter your date of birth" [(ngModel)]=userItem.dob>
+          </div>
+         <div class="form-group">
+           <label for="email">Email</label>
+           <input type="text" name="email" class="form-control" placeholder="Enter your Email" [(ngModel)]=userItem.email>
+         </div>
+         <div class="form-group">
+           <label for="password">Password</label>
+           <input type="password" name="password" class="form-control" placeholder="Enter your password" [(ngModel)]=userItem.password required #password="ngModel" minlength="6">
+           <div *ngIf="password.invalid && password.touched">
+              <small style="margin: 2px; color: red; font-weight: 500;" *ngIf="password.errors.required">Password is required</small>
+              <small style="margin: 2px; color: red; font-weight: 500;" *ngIf="password.errors.minlength">Minimum length is 6</small>
+           </div>
+         </div>
+         <div class="form-group">
+            <label for="cpassword">Confirm Password</label>
+            <input type="password" name="cpassword" class="form-control" placeholder="Re-enter your password" [(ngModel)]=user.userpass required #cpass="ngModel" pattern="{{password.value}}">
+            <div *ngIf="cpass.invalid && cpass.touched">
+              <small style="margin: 2px; color: red; font-weight: 500;" *ngIf="cpass.errors.pattern">Passwords donot match</small>
+           </div>
             
           </div>
-        </div>
-                                                                                         
-                                                      
-                                                        
-         </div><!--/col-12-->
-    </div>
-  </div>
-                                                  
-                                                                                  
-  <hr>
-  
-  <div class="container" id="footer">
-    <div class="row">
-      <div class="col col-sm-12">
-        
-        <h1>Follow Us</h1>
-        <div class="btn-group">
-         <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
-         <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
-         <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  
-  <hr>
-  
-  <hr>
-  
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <ul class="list-inline">
-            <li><i class="icon-facebook icon-2x"></i></li>
-            <li><i class="icon-twitter icon-2x"></i></li>
-            <li><i class="icon-google-plus icon-2x"></i></li>
-            <li><i class="icon-pinterest icon-2x"></i></li>
-          </ul>
-          
-        </div>
-        <div class="col-sm-6">
-            <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
-        </div>
-      </div>
-    </div>
-  </footer>
+         
+         <button type="submit" class="btn btn-primary" style="background-color: antiquewhite; color: darkcyan;">Create my account</button>
+       </fieldset>
+     </form>
+   
+   </div>
+
+

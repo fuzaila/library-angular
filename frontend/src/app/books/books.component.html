@@ -1,119 +1,57 @@
-<app-nav></app-nav>
+<div class="container">
+  <h3>{{title}}</h3> <hr>
+  <router-outlet></router-outlet><br>
 
-<div id="masthead">  
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7">
-          <h1>Books
-            <p class="lead"></p>
-          </h1>
-        </div>
-        <div class="col-md-5">
-          <div class="well well-lg"> 
-            <div class="row">
-              <div class="col-sm-12">
+    <div class='table-responsive'>
+      <table class='table' *ngIf = 'books && books.length'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+          </tr>
+         
+        </thead>
+        <tbody>  
+            <tr *ngFor='let book of books'>
                 
-              
-              </div>
-            </div>
+                <td *ngIf="_auth.userlogged() || _auth.adminlogged()"><img src="{{book.image}}" height="165px" width="124px"></td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.genre }}</td>
+                <td><div [ngClass]="{'show-less': showShortDesciption}"> {{ book.description }}</div><button  type="button" class="text-right show-button" (click)="alterDescriptionText()">
+                  {{ showShortDesciption ? 'Show more': 'Show less' }} </button></td>
+                <td>
+                  <a [routerLink]="[':{{book._id}}']" [queryParams]="{ _id: book._id, title: book.title, author: book.author, genre: book.genre, description: book.description, image: book.image}" class="btn btn-warning" style="cursor:pointer" *ngIf="_auth.adminlogged()" style="margin-bottom: 5px; width: 100px;"> Edit</a><br>
+                  <button class="btn btn-warning" style="cursor:pointer; width: 100px;" *ngIf="_auth.adminlogged()"(click)="deleteBook(book)"> Delete</button><br>      
+                  
+                </td>
+                
+              </tr>              
+        </tbody>
+      </table>
+    </div>  
+</div>
+
+    <!-- <div class="row" *ngIf="books && books.length">     
+        <br> -->
+        <!-- <div class="col-md-2 col-sm-3 text-center">
+          <a class="story-title" href="#"><img alt="" src="/images/<%=books[i].img%>" style="width:100px;height:100px" class="img-circle"></a>
+        </div> -->
+       <!-- <div class="col-md-10 col-sm-9" *ngFor='let book of books'>
+          <h3>{{ book.title }}</h3>
+          <div class="row">
+            <div class="col-xs-9">
+              <h4><span class="label label-default">{{ book.author }}</span></h4><h4>
+              <small style="font-family:courier,'new courier';" class="text-muted">{{ book.genre }}  • <a href="#" class="text-muted">Read More</a></small>
+              </h4></div>
+            <div class="col-xs-3"></div>
           </div>
-        </div>
+          <br><br>
+        </div> 
       </div> 
-    </div><!-- /cont -->
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="top-spacer"> </div>
-        </div>
-      </div> 
-    </div><!-- /cont -->
-    
-  </div>
-  
-  
-  <div class="container">
-    <div class="row">
-      
-      <div class="col-md-12"> 
-        
-        <div class="panel">
-          <div class="panel-body">
-            
-            
-            
-            <!--/stories-->
-            <div class="row" *ngFor='let book of books' >    
-              <br>
-              <div class="col-md-2 col-sm-3 text-center">
-                <a class="story-title" href="#"><img alt="" src="/assets/img/{{book.Cover}}" style="width:100px;height:100px" class="img-circle"></a>
-              </div>
-              <div class="col-md-10 col-sm-9">
-                <h3> {{ book.BookName }} </h3>
-                <div class="row">
-                  <div class="col-xs-9">
-                    <h4><span class="label label-default"> {{book.Author}} </span></h4><h4>
-                    <small style="font-family:courier,'new courier';" class="text-muted"> {{book.Genre}} 
-                    <a routerLink="/book/{{book._id}}" class="text-muted">Read More</a></small>
-                    </h4></div>
-                  <div class="col-xs-3"></div>
-                </div>
-                <br><br>
-              </div>
-            </div>
-            <hr>
-            <!--/stories-->
-            
-            
-            <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
-          
-            
-          </div>
-        </div>
-                                                                                         
-                                                      
-                                                        
-         </div><!--/col-12-->
-    </div>
-  </div>
-                                                  
-                                                                                  
-  <hr>
-  
-  <div class="container" id="footer">
-    <div class="row">
-      <div class="col col-sm-12">
-        
-        <h1>Follow Us</h1>
-        <div class="btn-group">
-         <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
-         <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
-         <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  
-  <hr>
-  
-  <hr>
-  
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <ul class="list-inline">
-            <li><i class="icon-facebook icon-2x"></i></li>
-            <li><i class="icon-twitter icon-2x"></i></li>
-            <li><i class="icon-google-plus icon-2x"></i></li>
-            <li><i class="icon-pinterest icon-2x"></i></li>
-          </ul>
-          
-        </div>
-        <div class="col-sm-6">
-            <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
-        </div>
-      </div>
-    </div>
-  </footer>
+      <hr> -->
